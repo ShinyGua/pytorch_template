@@ -117,7 +117,7 @@ def main(config):
             summary_writer.add_scalar('Test/Acc@5', acc5, epoch)
             summary_writer.add_scalar('Test/Max Acc@1', max_accuracy, epoch)
             summary_writer.add_scalar('Test/loss', loss, epoch)
-            summary_writer.add_scalar('Test/epoch time', e_time, epoch)
+            summary_writer.add_scalar('Time/epoch time', e_time, epoch)
             print(f"EPOCH {epoch} takes {datetime.timedelta(seconds=int(e_time))}")
 
 
@@ -195,8 +195,8 @@ def train_one_epoch(epoch, model, dset_loaders, optimizer, loss_fn,
             summary_writer.add_scalar("Train/loss", loss_meter.val, num_updates)
             summary_writer.add_scalar("Train/lr", lr, num_updates)
             summary_writer.add_scalar("Train/grad norm", norm_meter.val, num_updates)
-            summary_writer.add_scalar("Train/data time", data_time.val, num_updates)
-            summary_writer.add_scalar("Train/batch time", batch_time.val, num_updates)
+            summary_writer.add_scalar("Time/data time", data_time.val, num_updates)
+            summary_writer.add_scalar("Time/batch time", batch_time.val, num_updates)
 
     epoch_time = time.time() - start
     logger.info(f"EPOCH {epoch} training takes {datetime.timedelta(seconds=int(epoch_time))}")
