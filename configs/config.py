@@ -197,7 +197,6 @@ _C.amp_opt_level = 'O1'
 
 
 def _update_config_from_file(config, cfg_file):
-    config.defrost()
     with open(cfg_file, 'r') as f:
         yaml_cfg = yaml.load(f, Loader=yaml.FullLoader)
     for cfg in yaml_cfg.setdefault('BASE', ['']):
@@ -207,9 +206,10 @@ def _update_config_from_file(config, cfg_file):
             )
     print('=> merge config from {}'.format(cfg_file))
     config.merge_from_file(cfg_file)
-    config.freeze()
+
 
 def update_config(config, args):
+    config.defrost()
     if args.cfg:
         _update_config_from_file(config, args.cfg)
 
