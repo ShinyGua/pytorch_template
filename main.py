@@ -34,7 +34,7 @@ def parse_option():
     parser.add_argument('--batch-size', type=int, default=128, help="batch size for single GPU")
     parser.add_argument('--data-path', type=str, help='path to dataset')
     parser.add_argument('--dataset-name', type=str, help='Dataset type')
-    parser.add_argument('--num-classes', type=int, help='Dataset type')
+    parser.add_argument('--num-classes', type=int, help='Number of label classes')
     parser.add_argument('--amp-opt-level', type=str, default='O1', choices=['O0', 'O1', 'O2'],
                         help='mixed precision opt level, if O0, no amp is used')
     parser.add_argument('--tag', default="test", help='tag of experiment')
