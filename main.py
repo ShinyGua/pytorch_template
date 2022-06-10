@@ -111,6 +111,7 @@ def main(config):
 
         max_accuracy = max(max_accuracy, acc1)
         e_time = time.time() - s_time
+        logger.info(f' * Acc@1 {acc1:.3f} Acc@5 {acc5:.3f} Max accuracy {max_accuracy:.3f}')
         if config.local_rank == 0:
             summary_writer.add_scalar('Test/Acc@1', acc1, epoch)
             summary_writer.add_scalar('Test/Acc@5', acc5, epoch)
@@ -243,7 +244,6 @@ def validate(config, data_loader, model, validate_loss_fn):
                 f'Acc@1 {acc1_meter.val:.3f} ({acc1_meter.avg:.3f})\t'
                 f'Acc@5 {acc5_meter.val:.3f} ({acc5_meter.avg:.3f})\t'
                 f'Mem {memory_used:.0f}MB')
-    logger.info(f' * Acc@1 {acc1_meter.avg:.3f} Acc@5 {acc5_meter.avg:.3f}')
     return acc1_meter.avg, acc5_meter.avg, loss_meter.avg
 
 
